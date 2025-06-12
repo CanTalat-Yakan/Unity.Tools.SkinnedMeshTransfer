@@ -1,0 +1,16 @@
+{
+    "name": "UnityEssentials.SkinnedMeshTransfer.Editor",
+    "rootNamespace": "UnityEssentials",
+    "references": [
+        "GUID:924353f6ddc896f4a833c8cda62716b1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
