@@ -28,7 +28,7 @@ namespace UnityEssentials
             if (_skinnedMeshRenderers == null)
                 _skinnedMeshRenderers = new SkinnedMeshRenderer[0];
 
-            _skinnedMeshList = new ReorderableList(null, typeof(SkinnedMeshRenderer), true, false, true, true)
+            _skinnedMeshList = new ReorderableList(null, typeof(SkinnedMeshRenderer), true, true, true, true)
             {
                 drawElementCallback = (rect, index, isActive, isFocused) =>
                 {
@@ -39,6 +39,10 @@ namespace UnityEssentials
                         _skinnedMeshRenderers[index],
                         typeof(SkinnedMeshRenderer),
                         true);
+                },
+                drawHeaderCallback = rect =>
+                {
+                    EditorGUI.LabelField(rect, "Skinned Mesh Renderers");
                 },
                 onAddCallback = list => { ArrayUtility.Add(ref _skinnedMeshRenderers, null); },
                 onRemoveCallback = list => { ArrayUtility.RemoveAt(ref _skinnedMeshRenderers, list.index); },
@@ -51,12 +55,10 @@ namespace UnityEssentials
             EditorGUILayout.Space();
 
             _viewScrollPosition = EditorGUILayout.BeginScrollView(_viewScrollPosition, GUILayout.Height(position.height - 90));
+            if (_skinnedMeshList != null)
             {
-                if (_skinnedMeshList != null)
-                {
-                    _skinnedMeshList.list = _skinnedMeshRenderers;
-                    _skinnedMeshList.DoLayoutList();
-                }
+                _skinnedMeshList.list = _skinnedMeshRenderers;
+                _skinnedMeshList.DoLayoutList();
             }
             EditorGUILayout.EndScrollView();
 
@@ -90,7 +92,6 @@ namespace UnityEssentials
             _skinnedMeshRenderers.All(r => r != null) &&
             _newArmature != null &&
             _newParent != null;
-
     }
 }
 #endif
